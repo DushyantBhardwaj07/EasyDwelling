@@ -8,7 +8,7 @@ import {
 } from 'firebase/storage';
 import { app } from '../firebase';
 import Notification from '../components/Notification';
-import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, } from '../redux/user/userSlice';
+import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailure, deleteUserStart, deleteUserSuccess, signOutUserStart, } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 
 export default function Profile() {
@@ -104,6 +104,20 @@ export default function Profile() {
     }
   };
 
+  const handleSignOut = async () =>{
+    try{
+      dispatch(signOutUserStart());
+      const res = await fetch('/api/auth/signout');
+      const data = await res.json();
+      if(data.success === false){
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch(error){
+      dispatch(deleteUserFailure(data.message));
+    }
+  };
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -177,7 +191,7 @@ export default function Profile() {
           className='text-red-700 cursor-pointer'
         >Delete account
         </span>
-        <span className='text-red-700 cursor-pointer'>Sign out</span>
+        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>Sign out</span>
       </div>
       {notification && (
         <Notification
