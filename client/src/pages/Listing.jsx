@@ -86,10 +86,10 @@ export default function Listing() {
 
       <div className='max-w-6xl mx-auto p-3 my-7 flex flex-col gap-6'>
         <h1 className='text-3xl font-bold'>
-          {listing.name} - ${' '}
+          {listing.name} - Rs. {' '}
           {listing.offer
-            ? listing.discountPrice.toLocaleString('en-US')
-            : listing.regularPrice.toLocaleString('en-US')}
+            ? listing.discountPrice.toLocaleString('en-IN')
+            : listing.regularPrice.toLocaleString('en-IN')}
           {listing.type === 'rent' && ' / month'}
         </h1>
         
@@ -104,7 +104,7 @@ export default function Listing() {
           </span>
           {listing.offer && (
             <span className='bg-green-900 text-white text-center p-2 rounded-md w-full max-w-[250px] text-xl'>
-              ${+listing.regularPrice - +listing.discountPrice} OFF
+              Rs. {+listing.regularPrice - +listing.discountPrice} OFF
             </span>
           )}
         </div>
