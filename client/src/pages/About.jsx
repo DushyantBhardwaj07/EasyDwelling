@@ -10,7 +10,7 @@ export default function About() {
             EasyDwelling is your trusted partner in finding the perfect home. We understand that your living space is more than just a property – it's where your life unfolds. Our innovative platform is designed to simplify your house-hunting journey, making it as easy and enjoyable as possible.
           </p>
           <p className='mb-4 text-gray-700 leading-relaxed'>
-            EasyDwelling combines cutting-edge technology with personalized service. We're not just about listings; we're about matching you with a home that fits your lifestyle, aspirations, and needs.
+            EasyDwelling combines cutting-edge technology with personalized services. We're not just about listings; we're about matching you with a home that fits your lifestyle, aspirations, and needs.
           </p>
         </div>
         <div>
